@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 import "./login.css"
-import Notification from '../notification/Notification'
+
 
 const Login = () => {
 
@@ -22,7 +22,24 @@ const Login = () => {
     // to warn some message after form submit
     const handleLogin = e => {
         e.preventDefault()
-        // toast.success("Successful")
+        toast.success("Successful")
+    }
+
+    const handleRegister = async (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.target);
+
+        const { username , email , password } = Object.fromEntries(formData);
+
+        try {
+            
+            
+
+
+        } catch (err) {
+            console.log(err)
+            toast.error(err.message)
+        }
     }
 
     return (
@@ -40,7 +57,7 @@ const Login = () => {
                 <h2>
                     Create an Account
                 </h2>
-                <form >
+                <form onSubmit={handleRegister}>
                     <label htmlFor="file">
                         <img src={avatar.url || "./avatar.png"} alt="" />
                         Upload an image</label>
